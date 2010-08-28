@@ -17,7 +17,7 @@ my %datastash;
 
 sub content_array {
   my ( $self, $package ) = @_;
-  if ( exists { $datastash{$package} } ) {
+  if ( exists $datastash{$package} ) {
     return @{ $datastash{$package} };
   }
   my @contentlines;
@@ -26,7 +26,7 @@ sub content_array {
   }
   my $fh = Package::Stash::Data::FileHandle->get_fh($package);
   while (<$fh>) {
-    push @contentlines, $fh;
+    push @contentlines, $_;
   }
   $datastash{$package} = \@contentlines;
   return @contentlines;
