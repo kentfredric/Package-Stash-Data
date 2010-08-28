@@ -6,7 +6,7 @@ BEGIN {
   $Package::Stash::Data::FileHandle::VERSION = '0.01000002';
 }
 
-# ABSTRACT: A Very simple interface to the __DATA__  filehandle.
+# ABSTRACT: A Very simple interface to the __DATA__  file handle.
 
 use Package::Stash;
 
@@ -45,7 +45,7 @@ __END__
 
 =head1 NAME
 
-Package::Stash::Data::FileHandle - A Very simple interface to the __DATA__  filehandle.
+Package::Stash::Data::FileHandle - A Very simple interface to the __DATA__  file handle.
 
 =head1 VERSION
 
@@ -73,7 +73,7 @@ This Package serves as a very I<very> simple interface to a packages __DATA__ se
 
 Its primary purposes is to make successive accesses viable without needing to scan the file manually for the __DATA__ marker.
 
-It does this mostly by recording the current position of the filehandle on the first call to get_fh, and then re-using that position on every successive call, which eliminates a bit of the logic for you.
+It does this mostly by recording the current position of the file handle on the first call to get_fh, and then re-using that position on every successive call, which eliminates a bit of the logic for you.
 
 =head1 METHODS
 
@@ -97,7 +97,7 @@ but this is only an 80% solution.
 
 =head1 WARNING
 
-At present, this module does you no favours if something else earlier has moved the filehandle position past
+At present, this module does you no favours if something else earlier has moved the file handle position past
 the __DATA__ section, or rewinded it to the start of the file. This is an understood caveat, but nothing else
 seems to have a good way around this either.
 
@@ -106,7 +106,7 @@ you your code doesn't break.
 
 Also, unfortunately, due to the way this works, if 2 people both call get_fh on the same package in
 co-operative code things might be a bit weird, but this is pretty inescapable if you're working with the
-filehandle interface anyway, and its going to be by default a pretty evil thing to do.
+file handle interface anyway, and its going to be by default a pretty evil thing to do.
 
 =head1 AUTHOR
 
