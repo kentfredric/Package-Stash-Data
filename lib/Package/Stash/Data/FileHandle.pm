@@ -21,7 +21,7 @@ sub has_fh {
   my $object = Package::Stash->new($package);
   return unless $object->has_package_symbol('DATA');
   my $fh = $object->get_package_symbol('DATA');
-  return defined fileno *$fh;
+  return defined fileno *{$fh};
 }
 
 
@@ -98,7 +98,7 @@ but this is only an 80% solution.
 =head1 WARNING
 
 At present, this module does you no favours if something else earlier has moved the file handle position past
-the __DATA__ section, or rewinded it to the start of the file. This is an understood caveat, but nothing else
+the __DATA__ section, or rewound it to the start of the file. This is an understood caveat, but nothing else
 seems to have a good way around this either.
 
 Hopefully, if other people B<*do*> decide to go moving your file pointer, they'll use this module to do it so
