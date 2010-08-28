@@ -1,9 +1,9 @@
-package Package::Stash::Data::String;
-
-# ABSTRACT: Access Packages __DATA__ sections as arbitrary strings.
 use strict;
 use warnings;
 
+package Package::Stash::Data::String;
+
+# ABSTRACT: Access Packages __DATA__ sections as arbitrary strings.
 use Package::Stash::Data::FileHandle;
 
 =head1 SYNOPSIS
@@ -30,7 +30,7 @@ sub content_array {
     return @{ $datastash{$package} };
   }
   my @contentlines;
-  unless ( Package::Stash::Data::FileHandle->has_fh($package) ) {
+  if ( not Package::Stash::Data::FileHandle->has_fh($package) ) {
     return;
   }
   my $fh = Package::Stash::Data::FileHandle->get_fh($package);
@@ -40,11 +40,12 @@ sub content_array {
   $datastash{$package} = \@contentlines;
   return @contentlines;
 }
+
 =method content
 
 Returns a single scalar of the content of __DATA__
 
-Mostly just a conveience call for join(@content_array($package))
+Mostly just a convenience call for join(@content_array($package))
 
     my $lines = Package::Stash::Data::String->content_array( $package )l
 
@@ -52,7 +53,7 @@ Mostly just a conveience call for join(@content_array($package))
 
 sub content {
   my ( $self, $package ) = @_;
-  return join( '', $self->content_array($package) );
+  return join q[], $self->content_array($package);
 }
 
 1;
