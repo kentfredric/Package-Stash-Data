@@ -12,6 +12,7 @@ use Package::Stash::Data::FileHandle;
 
 my %datastash;
 
+
 sub content_array {
   my ( $self, $package ) = @_;
   if ( exists $datastash{$package} ) {
@@ -52,6 +53,23 @@ version 0.01000002
 
     my $string = Package::Stash::Data::String->content($package);
     my @strings = Package::Stash::Data::String->content_array($package);
+
+=head1 METHODS
+
+=head2 content_array
+
+Returns an array of lines from __DATA__ split by \n.
+Note: \n is still present on the end of lines.
+
+    my @lines = Package::Stash::Data::String->content_array($package);
+
+=head2 content
+
+Returns a single scalar of the content of __DATA__
+
+Mostly just a conveience call for join(@content_array($package))
+
+    my $lines = Package::Stash::Data::String->content_array( $package )l
 
 =head1 AUTHOR
 
