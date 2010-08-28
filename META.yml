@@ -3,6 +3,7 @@ abstract: 'Various tools for working with __DATA__'
 author:
   - 'Kent Fredric <kentnl@cpan.org>'
 build_requires:
+  Data::Dump: 0
   English: 0
   File::Find: 0
   File::Temp: 0
@@ -22,15 +23,19 @@ name: Package-Stash-Data
 provides:
   Package::Stash::Data:
     file: lib/Package/Stash/Data.pm
-    version: 0.01000000
+    version: 0.01000002
   Package::Stash::Data::FileHandle:
     file: lib/Package/Stash/Data/FileHandle.pm
-    version: 0.01000000
+    version: 0.01000002
+  Package::Stash::Data::String:
+    file: lib/Package/Stash/Data/String.pm
+    version: 0.01000002
 requires:
   Package::Stash: 0
-version: 0.01000000
+version: 0.01000002
 x_BuiltWith:
   modules:
+    Data::Dump: 1.17
     English: 1.04
     File::Find: 1.15
     File::Temp: 0.22

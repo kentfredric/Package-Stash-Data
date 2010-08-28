@@ -2,7 +2,7 @@ NAME
     Package::Stash::Data - Various tools for working with __DATA__
 
 VERSION
-    version 0.01000000
+    version 0.01000002
 
 AUTHOR
     Kent Fredric <kentnl@cpan.org>

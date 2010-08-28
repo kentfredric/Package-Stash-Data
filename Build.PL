@@ -7,6 +7,7 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   'build_requires' => {
+    'Data::Dump' => '0',
     'English' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
@@ -23,7 +24,7 @@ my %module_build_args = (
     'Kent Fredric <kentnl@cpan.org>'
   ],
   'dist_name' => 'Package-Stash-Data',
-  'dist_version' => '0.01000000',
+  'dist_version' => '0.01000002',
   'license' => 'perl',
   'module_name' => 'Package::Stash::Data',
   'recommends' => {},

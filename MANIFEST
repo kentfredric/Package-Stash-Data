@@ -8,10 +8,12 @@ README
 dist.ini
 lib/Package/Stash/Data.pm
 lib/Package/Stash/Data/FileHandle.pm
+lib/Package/Stash/Data/String.pm
 perlcritic.rc
 t/00-compile.t
 t/000-report-versions-tiny.t
 t/01_Handle.t
+t/02_String.t
 t/author-critic.t
 t/lib/Data.pm
 t/release-distmeta.t

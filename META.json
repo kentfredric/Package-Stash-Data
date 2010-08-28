@@ -31,6 +31,7 @@
       },
       "test" : {
          "requires" : {
+            "Data::Dump" : 0,
             "English" : 0,
             "File::Find" : 0,
             "File::Temp" : 0,
@@ -43,17 +44,22 @@
    "provides" : {
       "Package::Stash::Data" : {
          "file" : "lib/Package/Stash/Data.pm",
-         "version" : "0.01000000"
+         "version" : "0.01000002"
       },
       "Package::Stash::Data::FileHandle" : {
          "file" : "lib/Package/Stash/Data/FileHandle.pm",
-         "version" : "0.01000000"
+         "version" : "0.01000002"
+      },
+      "Package::Stash::Data::String" : {
+         "file" : "lib/Package/Stash/Data/String.pm",
+         "version" : "0.01000002"
       }
    },
    "release_status" : "stable",
-   "version" : "0.01000000",
+   "version" : "0.01000002",
    "x_BuiltWith" : {
       "modules" : {
+         "Data::Dump" : "1.17",
          "English" : "1.04",
          "File::Find" : "1.15",
          "File::Temp" : "0.22",

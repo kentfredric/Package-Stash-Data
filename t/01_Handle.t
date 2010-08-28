@@ -20,18 +20,18 @@ sub lslurp {
 }
 
 subtest 'has_fh' => sub {
-  plan tests => 20;
+  plan tests => 6;
 
-  for ( 1 .. 10 ) {
+  for ( 1 .. 3 ) {
     ok( Package::Stash::Data::FileHandle->has_fh('Data'),        'Data has the DATA filehandle' );
     ok( !Package::Stash::Data::FileHandle->has_fh('IDontExist'), 'NonExistentPackage has no DATA filehandle' );
   }
 };
 
 subtest 'get_fh nonfatal' => sub {
-  plan tests => 10;
+  plan tests => 3;
 
-  for ( 1 .. 10 ) {
+  for ( 1 .. 3 ) {
     lives_ok {
       Package::Stash::Data::FileHandle->get_fh('Data');
     }
@@ -40,9 +40,9 @@ subtest 'get_fh nonfatal' => sub {
 };
 
 subtest 'get_fh linecheck' => sub {
-  plan tests => 10;
+  plan tests => 3;
 
-  for ( 1 .. 10 ) {
+  for ( 1 .. 3 ) {
     is( lslurp( Package::Stash::Data::FileHandle->get_fh('Data') ), 13 + 1 + 1 + 21, 'Line length' );
   }
 };
