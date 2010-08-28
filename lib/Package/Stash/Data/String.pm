@@ -1,12 +1,12 @@
+use strict;
+use warnings;
+
 package Package::Stash::Data::String;
 BEGIN {
   $Package::Stash::Data::String::VERSION = '0.01000002';
 }
 
 # ABSTRACT: Access Packages __DATA__ sections as arbitrary strings.
-use strict;
-use warnings;
-
 use Package::Stash::Data::FileHandle;
 
 
@@ -19,7 +19,7 @@ sub content_array {
     return @{ $datastash{$package} };
   }
   my @contentlines;
-  unless ( Package::Stash::Data::FileHandle->has_fh($package) ) {
+  if ( not Package::Stash::Data::FileHandle->has_fh($package) ) {
     return;
   }
   my $fh = Package::Stash::Data::FileHandle->get_fh($package);
@@ -30,9 +30,10 @@ sub content_array {
   return @contentlines;
 }
 
+
 sub content {
   my ( $self, $package ) = @_;
-  return join( '', $self->content_array($package) );
+  return join q[], $self->content_array($package);
 }
 
 1;
