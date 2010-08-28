@@ -1,5 +1,5 @@
-Revision history for {{$dist->name}}
+Revision history for Package-Stash-Data
 
-{{$NEXT}}
+0.01000000 2010-08-29 00:46:11 Pacific/Auckland
           First version.
 
