@@ -68,7 +68,7 @@ Note: \n is still present on the end of lines.
 
 Returns a single scalar of the content of __DATA__
 
-Mostly just a conveience call for join(@content_array($package))
+Mostly just a convenience call for join(@content_array($package))
 
     my $lines = Package::Stash::Data::String->content_array( $package )l
 
