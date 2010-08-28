@@ -30,7 +30,7 @@ sub get_fh {
   my $object = Package::Stash->new($package);
   my $fh     = $object->get_package_symbol('DATA');
   if ( !exists $datastash{$package} ) {
-    $datastash{$package} = tell($fh);
+    $datastash{$package} = tell $fh;
     return $fh;
   }
   seek $fh, $datastash{$package}, 0;
@@ -85,14 +85,14 @@ Determine if C<$package> has a usable __DATA__ section that can be read.
 
 =head2 get_fh
 
-Get a readable filehandle for the __DATA__ section of a given package.
+Get a readable file handle for the __DATA__ section of a given package.
 
     my $fh = Package::Stash::Data::FileHandle->get_fh( $package );
     while( <$fh> ){
         print $_;
     }
 
-Returned $fh should hopefully be always rewound into the right location. Notedly its not always possible,
+Returned $fh should hopefully be always rewound into the right location. Note its not always possible,
 but this is only an 80% solution.
 
 =head1 WARNING
