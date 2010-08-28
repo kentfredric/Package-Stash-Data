@@ -15,6 +15,15 @@ use Package::Stash::Data::FileHandle;
 
 my %datastash;
 
+=method content_array
+
+Returns an array of lines from __DATA__ split by \n.
+Note: \n is still present on the end of lines.
+
+    my @lines = Package::Stash::Data::String->content_array($package);
+
+=cut
+
 sub content_array {
   my ( $self, $package ) = @_;
   if ( exists $datastash{$package} ) {
@@ -31,6 +40,15 @@ sub content_array {
   $datastash{$package} = \@contentlines;
   return @contentlines;
 }
+=method content
+
+Returns a single scalar of the content of __DATA__
+
+Mostly just a conveience call for join(@content_array($package))
+
+    my $lines = Package::Stash::Data::String->content_array( $package )l
+
+=cut
 
 sub content {
   my ( $self, $package ) = @_;
