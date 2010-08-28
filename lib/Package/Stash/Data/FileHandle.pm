@@ -16,34 +16,26 @@ my %datastash;
 
 
 
-
-
-
-
 sub has_fh {
-    my ( $self, $package ) = @_ ;
-    my $object = Package::Stash->new( $package );
-    return unless $object->has_package_symbol('DATA');
-    my $fh = $object->get_package_symbol('DATA');
-    return defined fileno *$fh;
+  my ( $self, $package ) = @_;
+  my $object = Package::Stash->new($package);
+  return unless $object->has_package_symbol('DATA');
+  my $fh = $object->get_package_symbol('DATA');
+  return defined fileno *$fh;
 }
 
 
 sub get_fh {
-    my ( $self, $package ) = @_;
-    my $object = Package::Stash->new( $package );
-    my $fh = $object->get_package_symbol('DATA');
-    if( !exists $datastash{ $package } ){
-        $datastash{$package} = tell($fh);
-        return $fh;
-    }
-    seek( $fh, $datastash{$package}, 0 );
+  my ( $self, $package ) = @_;
+  my $object = Package::Stash->new($package);
+  my $fh     = $object->get_package_symbol('DATA');
+  if ( !exists $datastash{$package} ) {
+    $datastash{$package} = tell($fh);
     return $fh;
+  }
+  seek $fh, $datastash{$package}, 0;
+  return $fh;
 }
-
-
-
-
 
 1;
 
