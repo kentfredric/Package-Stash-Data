@@ -238,12 +238,12 @@ version 0.01000018
 
 Create a new object containing the extracted sections.
 
-Behaviourally this works a lot like L<Data::Section>, and in fact,
+Behaviourally this works a lot like L<< C<Data::Section>|Data::Section >>, and in fact,
 some of the code is stolen from that.
 
 C<package> is a mandatory flag indicating where to look for the __DATA__
 
-C<header_re> and C<default_name> are taken verbatim from L<Data::Section>
+C<header_re> and C<default_name> are taken verbatim from L<< C<Data::Section>|Data::Section >>
 
 C<lazy> is an optional flag that controls when the data will be extracted, at C<< ->new() >> or when the
 stash is first requested.
