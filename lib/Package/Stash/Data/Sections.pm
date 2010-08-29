@@ -11,7 +11,7 @@ use namespace::autoclean;
 
 =p_method _default_header_re
 
-Returns the default header parsing regex.
+Returns the default header parsing regular expression.
 
   $object->_defualt_header_re;
 
@@ -47,7 +47,7 @@ sub _document_end_re {
 
 =p_method _default_lazy
 
-Returns the default flag for lazyness (  False )
+Returns the default flag for laziness (  False )
 
   $object->_default_lazy;
 
@@ -69,12 +69,12 @@ sub _default_lazy {
 
 Create a new object containing the extracted sections.
 
-Behaviourally this works a lot like L<Data::Section>, and in fact,
+Behaviourally this works a lot like L<< C<Data::Section>|Data::Section >>, and in fact,
 some of the code is stolen from that.
 
 C<package> is a mandatory flag indicating where to look for the __DATA__
 
-C<header_re> and C<default_name> are taken verbatim from L<Data::Section>
+C<header_re> and C<default_name> are taken verbatim from L<< C<Data::Section>|Data::Section >>
 
 C<lazy> is an optional flag that controls when the data will be extracted, at C<< ->new() >> or when the
 stash is first requested.
@@ -117,14 +117,14 @@ sub new {
 
   my $stash = $object->stash();
 
-Returns all the sections in a hashref.
+Returns all the sections in a hash reference.
 
-Note that all strings are scalar refs, ie:
+Note that all strings are scalar refs, i.e.:
 
   my $stash = $object->stash();
   print ${ $stash->{'key' } };
 
-If the stash is not populated, and can't be populated, it will return undef.
+If the stash is not populated, and can't be populated, it will return C<undef>.
 
 =cut
 
@@ -144,7 +144,7 @@ Returns a scalar ref to the given section data in the objects stash.
 
   print ${ $object->stash_section('key' ) };
 
-If the stash can't be populated, or the section does not exist, it will return undef.
+If the stash can't be populated, or the section does not exist, it will return C<undef>.
 
 =cut
 
@@ -160,7 +160,7 @@ sub stash_section {
 
 Returns all the names of the discovered sections.
 
-If the stash can't be populated, it will return undef/empty list, depending on context.
+If the stash can't be populated, it will return C<undef>/empty list, depending on context.
 
 =cut
 
@@ -239,7 +239,7 @@ sub header_re {
   return $_[0]->{header_re};
 }
 
-=method packge
+=method package
 
   $object->package;
 
@@ -247,9 +247,11 @@ Returns the package this data is for.
 
 =cut
 
+## no critic ( ProhibitBuiltinHomonyms )
 sub package {
   return $_[0]->{package};
 }
+## use critic
 
 =method lazy
 
@@ -282,7 +284,7 @@ sub has_default_name {
 
   $object->default_name
 
-Returns the user specified 'default_name', or undef if it was not specified.
+Returns the user specified 'default_name', or C<undef> if it was not specified.
 
 =cut
 
