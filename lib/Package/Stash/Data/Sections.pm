@@ -337,7 +337,7 @@ Returns the default header parsing regular expression.
 
 =head2 _default_lazy
 
-Returns the default flag for lazyness (  False )
+Returns the default flag for laziness (  False )
 
   $object->_default_lazy;
 
