@@ -158,9 +158,11 @@ sub header_re {
 }
 
 
+## no critic ( ProhibitBuiltinHomonyms )
 sub package {
   return $_[0]->{package};
 }
+## use critic
 
 
 sub lazy {
