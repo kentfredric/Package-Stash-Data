@@ -252,14 +252,14 @@ stash is first requested.
 
   my $stash = $object->stash();
 
-Returns all the sections in a hashref.
+Returns all the sections in a hash reference.
 
-Note that all strings are scalar refs, ie:
+Note that all strings are scalar refs, i.e.:
 
   my $stash = $object->stash();
   print ${ $stash->{'key' } };
 
-If the stash is not populated, and can't be populated, it will return undef.
+If the stash is not populated, and can't be populated, it will return C<undef>.
 
 =head2 stash_section
 
@@ -269,7 +269,7 @@ Returns a scalar ref to the given section data in the objects stash.
 
   print ${ $object->stash_section('key' ) };
 
-If the stash can't be populated, or the section does not exist, it will return undef.
+If the stash can't be populated, or the section does not exist, it will return C<undef>.
 
 =head2 stash_section_names
 
@@ -277,7 +277,7 @@ If the stash can't be populated, or the section does not exist, it will return u
 
 Returns all the names of the discovered sections.
 
-If the stash can't be populated, it will return undef/empty list, depending on context.
+If the stash can't be populated, it will return C<undef>/empty list, depending on context.
 
 =head2 header_re
 
@@ -285,7 +285,7 @@ If the stash can't be populated, it will return undef/empty list, depending on c
 
 Returns the regular expression used for header parsing.
 
-=head2 packge
+=head2 package
 
   $object->package;
 
@@ -307,7 +307,7 @@ Returns whether or not the user specified 'default_name' at construction time.
 
   $object->default_name
 
-Returns the user specified 'default_name', or undef if it was not specified.
+Returns the user specified 'default_name', or C<undef> if it was not specified.
 
 =head2 has_stash_section
 
@@ -331,7 +331,7 @@ Returns whether or not the stash has been populated yet.
 
 =head2 _default_header_re
 
-Returns the default header parsing regex.
+Returns the default header parsing regular expression.
 
   $object->_defualt_header_re;
 
