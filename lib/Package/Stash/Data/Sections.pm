@@ -18,7 +18,7 @@ Returns the default header parsing regex.
 =cut
 
 sub _default_header_re {
-  return qr/
+  return qr{
     \A                # start
       _+\[            # __[
         \s*           # any whitespace
@@ -27,7 +27,7 @@ sub _default_header_re {
       \]_+            # ]__
       [\x0d\x0a]{1,2} # possible cariage return for windows files
     \z                # end
-    /x;
+    }x;
 }
 
 =p_method _default_lazy
@@ -57,7 +57,7 @@ Create a new object containing the extracted sections.
 Behaviourally this works a lot like L<Data::Section>, and in fact,
 some of the code is stolen from that.
 
-C<package} is a mandatory flag indicating where to look for the __DATA__
+C<package> is a mandatory flag indicating where to look for the __DATA__
 
 C<header_re> and C<default_name> are taken verbatim from L<Data::Section>
 
