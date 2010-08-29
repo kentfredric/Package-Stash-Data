@@ -9,6 +9,11 @@ use Package::Stash::Data::FileHandle;
 
 use namespace::autoclean;
 
+=p_method _default_header_re
+
+Returns the default header parsing regex.
+
+=cut
 sub _default_header_re {
   return qr/
     \A                # start
@@ -22,9 +27,39 @@ sub _default_header_re {
     /x;
 }
 
+=p_method _default_lazy
+
+Returns the default flag for lazyness (  False )
+
+=cut
+
 sub _default_lazy {
   return 0;
 }
+
+=method new
+
+  Package::Stash::Data::Sections->new({   # Must be a HASHREF
+    package => 'Some::Package'            # Mandatory.
+    header_re => qr//x                    # Optional header parsing regex.
+    default_name => 'Default'             # Optional: Enables out-of-section data
+                                          #  to have an implicit section
+    lazy => 1                             # Optional: Make content evaluation lazy.
+  });
+
+Create a new object containing the extracted sections.
+
+Behaviourally this works a lot like L<Data::Section>, and in fact,
+some of the code is stolen from that.
+
+C<package} is a mandatory flag indicating where to look for the __DATA__
+
+C<header_re> and C<default_name> are taken verbatim from L<Data::Section>
+
+C<lazy> is an optional flag that controls when the data will be extracted, at C<< ->new() >> or when the
+stash is first requested.
+
+=cut
 
 sub new {
   my ( $self, $params ) = @_;
@@ -58,6 +93,21 @@ sub new {
   return $object;
 }
 
+=method stash
+
+  my $stash = $object->stash();
+
+Returns all the sections in a hashref.
+
+Note that all strings are scalar refs, ie:
+
+  my $stash = $object->stash();
+  print ${ $stash->{'key' } };
+
+If the stash is not populated, and can't be populated, it will return undef.
+
+=cut
+
 sub stash {
   my ($self) = @_;
   if ( not $self->has_stash ) {
@@ -69,18 +119,47 @@ sub stash {
   return $self->{stash};
 }
 
+=method stash_section
+
+  my $data = $object->stash_section('key');
+
+Returns a scalar ref to the given section data in the objects stash.
+
+  print ${ $object->stash_section('key' ) };
+
+If the stash can't be populated, or the section does not exist, it will return undef.
+
+=cut
+
 sub stash_section {
   my ( $self, $section ) = @_;
   return if not $self->has_stash_section($section);
   return $self->stash->{$section};
 }
 
+=method stash_section_names
+
+  my ( @names ) = $object->stash_section_names;
+
+Returns all the names of the discovered sections.
+
+If the stash can't be populated, it will return undef/empty list, depending on context.
+
+=cut
 sub stash_section_names {
   my ($self) = @_;
   my $stash = $self->stash;
   return if not defined $stash;
   return keys %{$stash};
 }
+
+=p_method _populate_stash
+
+Internal method that populates the stash using the given parameters.
+
+  $object->_populate_stash;
+
+=cut
 
 sub _populate_stash {
   my ($self) = @_;
