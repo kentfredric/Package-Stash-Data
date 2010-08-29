@@ -185,8 +185,15 @@ LINE: while ( my $line = <$fh> ) {
       next LINE;
     }
 
-    last LINE if $line =~ /^__END__/;
-    next LINE if !defined $current and $line =~ /^\s*$/;
+    last LINE if $line =~ qr{
+      ^            # Start of line
+      __END__      # Document END matcher
+    }x;
+    next LINE if !defined $current and $line =~ qr{
+      ^
+      \s*   # Any empty lines before the first section get ignored.
+      $
+    }x;
 
     if ( not defined $current ) {
       require Carp;
@@ -196,7 +203,10 @@ LINE: while ( my $line = <$fh> ) {
     # This is cargo cult from Data::Section.
     # I'm not sure what its for O_o.
     #
-    $line =~ s/\A\\//;
+    $line =~ s{
+        \A      # Line start
+        \\      # Literal slash
+    }{}x;
 
     ${ $stash{$current} } .= $line;
 
