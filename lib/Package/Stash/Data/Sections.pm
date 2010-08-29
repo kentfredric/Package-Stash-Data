@@ -13,7 +13,10 @@ use namespace::autoclean;
 
 Returns the default header parsing regex.
 
+  $object->_defualt_header_re;
+
 =cut
+
 sub _default_header_re {
   return qr/
     \A                # start
@@ -30,6 +33,8 @@ sub _default_header_re {
 =p_method _default_lazy
 
 Returns the default flag for lazyness (  False )
+
+  $object->_default_lazy;
 
 =cut
 
@@ -76,12 +81,12 @@ sub new {
     $params->{lazy} = 0;
   }
   my $object = {};
-  $object->{package}   = $params->{package};
-  if ( exists $params->{header_re} ){
+  $object->{package} = $params->{package};
+  if ( exists $params->{header_re} ) {
     $object->{header_re} = $params->{header_re};
   }
-  if ( exists $params->{lazy} ){
-    $object->{lazy}      = ( $params->{lazy} ? 1 : 0 );
+  if ( exists $params->{lazy} ) {
+    $object->{lazy} = ( $params->{lazy} ? 1 : 0 );
   }
   if ( exists $params->{default_name} ) {
     $object->{default_name} = $params->{default_name};
@@ -110,9 +115,6 @@ If the stash is not populated, and can't be populated, it will return undef.
 
 sub stash {
   my ($self) = @_;
-  if ( not $self->has_stash ) {
-    $self->_populate_stash;
-  }
   if ( not $self->has_stash ) {
     return;
   }
@@ -146,6 +148,7 @@ Returns all the names of the discovered sections.
 If the stash can't be populated, it will return undef/empty list, depending on context.
 
 =cut
+
 sub stash_section_names {
   my ($self) = @_;
   my $stash = $self->stash;
@@ -202,34 +205,82 @@ LINE: while ( my $line = <$fh> ) {
   return;
 }
 
+=method header_re
+
+  $object->header_re;
+
+Returns the regular expression used for header parsing.
+
+=cut
+
 sub header_re {
-  if( not exists $_[0]->{header_re} ){
-    $_[0]->{header_re} = $_[0]->_default_header_re ;
+  if ( not exists $_[0]->{header_re} ) {
+    $_[0]->{header_re} = $_[0]->_default_header_re;
   }
   return $_[0]->{header_re};
 }
+
+=method packge
+
+  $object->package;
+
+Returns the package this data is for.
+
+=cut
 
 sub package {
   return $_[0]->{package};
 }
 
+=method lazy
+
+  $object->lazy;
+
+Returns the lazy flag for this package.
+
+=cut
+
 sub lazy {
-  if ( not exists $_[0]->{lazy} ){
+  if ( not exists $_[0]->{lazy} ) {
     $_[0]->{lazy} = $_[0]->_default_lazy;
   }
   return $_[0]->{lazy};
 }
 
+=method has_default_name
+
+  $object->has_default_name
+
+Returns whether or not the user specified 'default_name' at construction time.
+
+=cut
+
 sub has_default_name {
   return exists $_[0]->{default_name};
 }
 
+=method default_name
+
+  $object->default_name
+
+Returns the user specified 'default_name', or undef if it was not specified.
+
+=cut
+
 sub default_name {
-  if ( exists $_[0]->{default_name} ) {
+  if ( $_[0]->has_default_name ) {
     return $_[0]->{default_name};
   }
   return;
 }
+
+=method has_stash_section
+
+  $object->has_stash_section('Section Name');
+
+returns a false value if the stash cannot be populated, or the stash section named didn't exist.
+
+=cut
 
 sub has_stash_section {
   my $stash = $_[0]->stash;
@@ -238,7 +289,34 @@ sub has_stash_section {
   return 1;
 }
 
+=method has_stash
+
+  $object->has_stash;
+
+Returns a false value if the stash cannot be populated.
+
+=cut
+
 sub has_stash {
+  my ($self) = @_;
+  if ( not $self->stash_populated ) {
+    $self->_populate_stash;
+  }
+  if ( not $self->stash_populated ) {
+    return;
+  }
+  return 1;
+}
+
+=method stash_populated
+
+  $object->stash_populated
+
+Returns whether or not the stash has been populated yet.
+
+=cut
+
+sub stash_populated {
   return exists $_[0]->{stash};
 }
 
