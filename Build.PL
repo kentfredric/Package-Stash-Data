@@ -24,13 +24,16 @@ my %module_build_args = (
     'Kent Fredric <kentnl@cpan.org>'
   ],
   'dist_name' => 'Package-Stash-Data',
-  'dist_version' => '0.01000014',
+  'dist_version' => '0.01000017',
   'license' => 'perl',
   'module_name' => 'Package::Stash::Data',
   'recommends' => {},
   'recursive_test_files' => 1,
   'requires' => {
-    'Package::Stash' => '0'
+    'Carp' => '0',
+    'Package::Stash' => '0',
+    'Params::Classify' => '0',
+    'namespace::autoclean' => '0'
   },
   'script_files' => []
 );

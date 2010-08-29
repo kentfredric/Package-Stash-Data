@@ -26,7 +26,10 @@
       },
       "runtime" : {
          "requires" : {
-            "Package::Stash" : 0
+            "Carp" : 0,
+            "Package::Stash" : 0,
+            "Params::Classify" : 0,
+            "namespace::autoclean" : 0
          }
       },
       "test" : {
@@ -44,21 +47,34 @@
    "provides" : {
       "Package::Stash::Data" : {
          "file" : "lib/Package/Stash/Data.pm",
-         "version" : "0.01000014"
+         "version" : "0.01000017"
       },
       "Package::Stash::Data::FileHandle" : {
          "file" : "lib/Package/Stash/Data/FileHandle.pm",
-         "version" : "0.01000014"
+         "version" : "0.01000017"
+      },
+      "Package::Stash::Data::Sections" : {
+         "file" : "lib/Package/Stash/Data/Sections.pm",
+         "version" : "0.01000017"
       },
       "Package::Stash::Data::String" : {
          "file" : "lib/Package/Stash/Data/String.pm",
-         "version" : "0.01000014"
+         "version" : "0.01000017"
       }
    },
    "release_status" : "stable",
-   "version" : "0.01000014",
+   "resources" : {
+      "homepage" : "http://github.com/kentfredric/Package-Stash-Data/tree",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/kentfredric/Package-Stash-Data.git",
+         "web" : "http://github.com/kentfredric/Package-Stash-Data/tree"
+      }
+   },
+   "version" : "0.01000017",
    "x_BuiltWith" : {
       "modules" : {
+         "Carp" : "1.16",
          "Data::Dump" : "1.17",
          "English" : "1.04",
          "File::Find" : "1.15",
@@ -66,8 +82,10 @@
          "FindBin" : "1.50",
          "Module::Build" : "0.3607",
          "Package::Stash" : "0.05",
+         "Params::Classify" : "0.011",
          "Test::Exception" : "0.29",
-         "Test::More" : "0.96"
+         "Test::More" : "0.96",
+         "namespace::autoclean" : "0.11"
       },
       "perl" : "5.012001",
       "platform" : "linux",
