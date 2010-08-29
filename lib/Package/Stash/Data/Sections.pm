@@ -30,6 +30,21 @@ sub _default_header_re {
     }x;
 }
 
+sub _empty_line_re {
+  return qr{
+      ^
+      \s*   # Any empty lines before the first section get ignored.
+      $
+    }x
+}
+
+sub _document_end_re {
+  return qr{
+    ^          # Start of line
+    __END__    # Document END matcher
+  }x;
+}
+
 =p_method _default_lazy
 
 Returns the default flag for lazyness (  False )
@@ -185,15 +200,9 @@ LINE: while ( my $line = <$fh> ) {
       next LINE;
     }
 
-    last LINE if $line =~ qr{
-      ^            # Start of line
-      __END__      # Document END matcher
-    }x;
-    next LINE if !defined $current and $line =~ qr{
-      ^
-      \s*   # Any empty lines before the first section get ignored.
-      $
-    }x;
+    last LINE if $line =~ $self->_document_end_re;
+
+    next LINE if ( ( not defined $current ) and ( $line =~ $self->_empty_line_re ) );
 
     if ( not defined $current ) {
       require Carp;
