@@ -204,7 +204,7 @@ LINE: while ( my $line = <$fh> ) {
     # I'm not sure what its for O_o.
     #
     $line =~ s{
-        \A      # Line start
+        \A      # String start
         \\      # Literal slash
     }{}x;
 
