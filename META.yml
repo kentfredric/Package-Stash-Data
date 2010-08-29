@@ -23,16 +23,16 @@ name: Package-Stash-Data
 provides:
   Package::Stash::Data:
     file: lib/Package/Stash/Data.pm
-    version: 0.01000017
+    version: 0.01000018
   Package::Stash::Data::FileHandle:
     file: lib/Package/Stash/Data/FileHandle.pm
-    version: 0.01000017
+    version: 0.01000018
   Package::Stash::Data::Sections:
     file: lib/Package/Stash/Data/Sections.pm
-    version: 0.01000017
+    version: 0.01000018
   Package::Stash::Data::String:
     file: lib/Package/Stash/Data/String.pm
-    version: 0.01000017
+    version: 0.01000018
 requires:
   Carp: 0
   Package::Stash: 0
@@ -41,7 +41,7 @@ requires:
 resources:
   homepage: http://github.com/kentfredric/Package-Stash-Data/tree
   repository: git://github.com/kentfredric/Package-Stash-Data.git
-version: 0.01000017
+version: 0.01000018
 x_BuiltWith:
   modules:
     Carp: 1.16

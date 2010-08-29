@@ -3,7 +3,7 @@ use warnings;
 
 package Package::Stash::Data::FileHandle;
 BEGIN {
-  $Package::Stash::Data::FileHandle::VERSION = '0.01000017';
+  $Package::Stash::Data::FileHandle::VERSION = '0.01000018';
 }
 
 # ABSTRACT: A Very simple interface to the __DATA__  file handle.
@@ -49,7 +49,7 @@ Package::Stash::Data::FileHandle - A Very simple interface to the __DATA__  file
 
 =head1 VERSION
 
-version 0.01000017
+version 0.01000018
 
 =head1 SYNOPSIS
 

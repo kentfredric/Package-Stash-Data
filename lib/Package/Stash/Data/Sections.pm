@@ -3,7 +3,7 @@ use warnings;
 
 package Package::Stash::Data::Sections;
 BEGIN {
-  $Package::Stash::Data::Sections::VERSION = '0.01000017';
+  $Package::Stash::Data::Sections::VERSION = '0.01000018';
 }
 
 # ABSTRACT: A Data::Section like object that can represent any package.
@@ -24,6 +24,21 @@ sub _default_header_re {
       [\x0d\x0a]{1,2} # possible cariage return for windows files
     \z                # end
     }x;
+}
+
+sub _empty_line_re {
+  return qr{
+      ^
+      \s*   # Any empty lines before the first section get ignored.
+      $
+    }x
+}
+
+sub _document_end_re {
+  return qr{
+    ^          # Start of line
+    __END__    # Document END matcher
+  }x;
 }
 
 
@@ -110,15 +125,9 @@ LINE: while ( my $line = <$fh> ) {
       next LINE;
     }
 
-    last LINE if $line =~ qr{
-      ^            # Start of line
-      __END__      # Document END matcher
-    }x;
-    next LINE if !defined $current and $line =~ qr{
-      ^
-      \s*   # Any empty lines before the first section get ignored.
-      $
-    }x;
+    last LINE if $line =~ $self->_document_end_re;
+
+    next LINE if ( ( not defined $current ) and ( $line =~ $self->_empty_line_re ) );
 
     if ( not defined $current ) {
       require Carp;
@@ -211,7 +220,7 @@ Package::Stash::Data::Sections - A Data::Section like object that can represent 
 
 =head1 VERSION
 
-version 0.01000017
+version 0.01000018
 
 =head1 METHODS
 

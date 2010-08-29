@@ -47,19 +47,19 @@
    "provides" : {
       "Package::Stash::Data" : {
          "file" : "lib/Package/Stash/Data.pm",
-         "version" : "0.01000017"
+         "version" : "0.01000018"
       },
       "Package::Stash::Data::FileHandle" : {
          "file" : "lib/Package/Stash/Data/FileHandle.pm",
-         "version" : "0.01000017"
+         "version" : "0.01000018"
       },
       "Package::Stash::Data::Sections" : {
          "file" : "lib/Package/Stash/Data/Sections.pm",
-         "version" : "0.01000017"
+         "version" : "0.01000018"
       },
       "Package::Stash::Data::String" : {
          "file" : "lib/Package/Stash/Data/String.pm",
-         "version" : "0.01000017"
+         "version" : "0.01000018"
       }
    },
    "release_status" : "stable",
@@ -71,7 +71,7 @@
          "web" : "http://github.com/kentfredric/Package-Stash-Data/tree"
       }
    },
-   "version" : "0.01000017",
+   "version" : "0.01000018",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.16",

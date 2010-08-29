@@ -24,7 +24,7 @@ my %module_build_args = (
     'Kent Fredric <kentnl@cpan.org>'
   ],
   'dist_name' => 'Package-Stash-Data',
-  'dist_version' => '0.01000017',
+  'dist_version' => '0.01000018',
   'license' => 'perl',
   'module_name' => 'Package::Stash::Data',
   'recommends' => {},

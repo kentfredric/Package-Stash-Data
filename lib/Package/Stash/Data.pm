@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Package::Stash::Data;
 BEGIN {
-  $Package::Stash::Data::VERSION = '0.01000017';
+  $Package::Stash::Data::VERSION = '0.01000018';
 }
 #ABSTRACT: Various tools for working with __DATA__
 
@@ -17,7 +17,7 @@ Package::Stash::Data - Various tools for working with __DATA__
 
 =head1 VERSION
 
-version 0.01000017
+version 0.01000018
 
 =head1 AUTHOR
 
