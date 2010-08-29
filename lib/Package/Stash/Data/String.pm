@@ -3,7 +3,7 @@ use warnings;
 
 package Package::Stash::Data::String;
 BEGIN {
-  $Package::Stash::Data::String::VERSION = '0.01000002';
+  $Package::Stash::Data::String::VERSION = '0.01000014';
 }
 
 # ABSTRACT: Access Packages __DATA__ sections as arbitrary strings.
@@ -48,7 +48,7 @@ Package::Stash::Data::String - Access Packages __DATA__ sections as arbitrary st
 
 =head1 VERSION
 
-version 0.01000002
+version 0.01000014
 
 =head1 SYNOPSIS
 

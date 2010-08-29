@@ -23,16 +23,16 @@ name: Package-Stash-Data
 provides:
   Package::Stash::Data:
     file: lib/Package/Stash/Data.pm
-    version: 0.01000002
+    version: 0.01000014
   Package::Stash::Data::FileHandle:
     file: lib/Package/Stash/Data/FileHandle.pm
-    version: 0.01000002
+    version: 0.01000014
   Package::Stash::Data::String:
     file: lib/Package/Stash/Data/String.pm
-    version: 0.01000002
+    version: 0.01000014
 requires:
   Package::Stash: 0
-version: 0.01000002
+version: 0.01000014
 x_BuiltWith:
   modules:
     Data::Dump: 1.17
